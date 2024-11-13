@@ -1,6 +1,5 @@
 package com.example.springsecuritycontextsample14102022.ds;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +10,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
@@ -21,20 +19,20 @@ public class Customer {
     private Integer id;
 
     @NotBlank
-    @Size(min = 2,max = 5,message = "Code length must be between 2 and 5")
-    @Pattern(regexp = "[A-Za-z]*",message = "Code contains illegal characters")
+    @Size(min = 2, max = 5, message = "Code length must be between 2 and 5")
+    @Pattern(regexp = "[A-Za-z]*", message = "Code contains illegal characters")
     private String code;
 
     @NotBlank(message = "FirstName cannot be empty.")
-    @Pattern(regexp = "[A-Za-z-]*",message = "FirstName contains illegal characters.")
+    @Pattern(regexp = "[A-Za-z-]*", message = "FirstName contains illegal characters.")
     private String firstName;
 
     @NotBlank(message = "LastName cannot be empty.")
-    @Pattern(regexp = "[A-Za-z-]*",message = "LastName contains illegal characters.")
+    @Pattern(regexp = "[A-Za-z-]*", message = "LastName contains illegal characters.")
     private String lastName;
 
     @NotBlank(message = "Address cannot be empty.")
-    @Pattern(regexp = "[\\w .\\-/,]*",message = "Address contains illegal characters.")
+    @Pattern(regexp = "[\\w .\\-/,]*", message = "Address contains illegal characters.")
     private String address;
 
     public Customer() {

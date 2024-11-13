@@ -22,20 +22,22 @@ public class EmployeesController {
 
     @IsEmployeesRead
     @GetMapping("/employees")
-    public ModelAndView listEmployees(){
+    public ModelAndView listEmployees() {
         return new ModelAndView("employees"
-                ,"employees",employeeDao.findAll());
+                , "employees", employeeDao.findAll());
     }
+
     @IsEmployeesCreate
     @GetMapping("/create-employee")
-    public String ceateEmployee(Model model){
-        model.addAttribute("employee",new Employee());
+    public String ceateEmployee(Model model) {
+        model.addAttribute("employee", new Employee());
         return "employee-form";
     }
+
     @IsEmployeesCreate
     @PostMapping("/create-employee")
-    public String saveEmployee(@Valid Employee employee, BindingResult result){
-        if(result.hasErrors()){
+    public String saveEmployee(@Valid Employee employee, BindingResult result) {
+        if (result.hasErrors()) {
             return "employee-form";
         }
         employeeDao.save(employee);
@@ -44,7 +46,7 @@ public class EmployeesController {
 
     @IsEmployeesDelete
     @GetMapping("/employees/delete")
-    public String deleteEmployee(@RequestParam("id")int id){
+    public String deleteEmployee(@RequestParam("id") int id) {
         employeeDao.deleteById(id);
         return "redirect:/employees";
     }

@@ -1,6 +1,5 @@
 package com.example.springsecuritycontextsample14102022.controller;
 
-
 import com.example.springsecuritycontextsample14102022.dao.DepartmentsDao;
 import com.example.springsecuritycontextsample14102022.ds.Department;
 import com.example.springsecuritycontextsample14102022.security.annotation.departments.*;

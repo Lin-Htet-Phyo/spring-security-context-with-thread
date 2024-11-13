@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class AccountController {
@@ -18,6 +19,7 @@ public class AccountController {
 
     @GetMapping("/account")
     public String showAccountStatus(Model model) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         model.addAttribute("securityContextHolderStrategy",
                 SecurityContextHolder.getContextHolderStrategy().getClass().getSimpleName());
         storeSecurityContextDataModelInMainThread(model);
@@ -25,7 +27,7 @@ public class AccountController {
         return "account";
     }
 
-    private void storeSecurityContextDataModelInMainThread(Model model){
+    private void storeSecurityContextDataModelInMainThread(Model model) {
         storeSecurityContextDataInModel(MAIN, model);
     }
 
@@ -35,7 +37,7 @@ public class AccountController {
         thread.join();
     }
 
-    private void storeSecurityContextDataInModel(String prefix, Model model){
+    private void storeSecurityContextDataInModel(String prefix, Model model) {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
 

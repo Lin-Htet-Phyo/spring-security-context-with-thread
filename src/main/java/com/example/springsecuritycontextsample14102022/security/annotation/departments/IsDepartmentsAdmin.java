@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
 
 import static com.example.springsecuritycontextsample14102022.security.SecurityRoles.*;
 
-
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Secured(ROLES_PREFIX + DEPARTMENTS_ADMIN)
